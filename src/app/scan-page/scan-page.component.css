@@ -1,0 +1,11 @@
+
+.scan-message {
+  font-size: 50px;
+  text-align: center;
+}
+
+.text-box{
+  width: 0;
+  overflow: hidden;
+}
+
