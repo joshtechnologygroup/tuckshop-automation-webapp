@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {ProductService} from "../services/product.service";
 import {environment} from "../../environments/environment";
@@ -20,6 +20,7 @@ export class ScanPageComponent implements OnInit {
     private orderService: OrderService,
   ) {}
 
+  @ViewChild('barcodeInput',{static:false}) barcodeField: ElementRef;
   slides = [];
   public users: any;
   selectedUser: any;
@@ -119,14 +120,16 @@ export class ScanPageComponent implements OnInit {
         return environment.BASE_API_URL+ '/' + url;
       }
   }
+
   removeSlide(id) {
     this.slides.forEach((slide,index) => {
       if (slide.id === id) {
         this.slides.splice(index,1);
-        return;
       }
     });
+
   }
+
   proceedToEmail() {
     this.disableBtn = true;
     console.log(this.selectedUser);
@@ -145,7 +148,11 @@ export class ScanPageComponent implements OnInit {
       this.disableBtn = false;
       this.router.navigate(['/scan-page']);
     },(err) => {
-
+      console.log(err);
     });
+  }
+
+  getFocus() {
+    this.barcodeField.nativeElement.focus();
   }
 }

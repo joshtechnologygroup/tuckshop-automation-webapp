@@ -2,13 +2,12 @@
   <p>Please Scan Item's Barcode</p>
   <img src="assets/barcode-scanner.png" alt="Down-arrow" width="700" height="500">
 </div>
-<input style="border: 0" type="text" (keyup.enter)="getInputValue($event)" class="scan-text-box" autofocus>
+<input style="border: 0" type="text" #barcodeInput (focusout)="getFocus()" (keyup.enter)="getInputValue($event)" class="scan-text-box" autofocus>
 <div *ngIf="slides.length" class="item-list">
   <ngx-slick-carousel
     class="carousel"
     #slickModal="slick-carousel"
     [config]="slideConfig">
-
     <div ngxSlickItem *ngFor="let slide of slides" class="slide">
       <hr>
       <h4>{{ slide.name }} </h4>
@@ -16,7 +15,7 @@
       <h4>Quantity: &nbsp;{{ slide.quantity }}</h4>
       <hr>
       <img src="{{ slide.imageURL }}" alt="{{ slide.name }}" width="200px" height="200px" class="product-img">
-      <img src="assets/button.svg" height="40px" width="40px" class="cross-btn" (click)="removeSlide(slide.id)">
+      <img src="assets/button.svg" height="40px" width="40px" class="cross-btn" (click)="removeSlide(slide.id) || slickModal.initSlick()">
       <hr>
     </div>
   </ngx-slick-carousel>
@@ -26,7 +25,7 @@
       <ng-select class="ng-select-div"
                  [items]="users"
                  bindLabel="email"
-                 bindValue="id"
+                 bindValue="user_id"
                  groupBy="initials"
                  [(ngModel)]="selectedUser">
       </ng-select>
