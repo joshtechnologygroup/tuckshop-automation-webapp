@@ -29,6 +29,7 @@
     "diff-so-fancy": "^1.2.7",
     "jquery": "^3.4.1",
     "ngx-slick-carousel": "^0.4.6",
+    "ngx-snackbar": "^2.0.1",
     "rxjs": "6.0.0",
     "slick-carousel": "^1.8.1",
     "zone.js": "^0.8.26"
