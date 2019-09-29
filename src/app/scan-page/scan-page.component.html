@@ -1,8 +1,46 @@
-<div class="scan-message">
-  <p>Scan item from barcode scanner below</p>
-  <img src="assets/down-arrow.png" alt="Down-arrow" width="300" height="300">
+<div *ngIf="!slides.length" class="scan-message">
+  <p>Please Scan Item's Barcode</p>
+  <img src="assets/barcode-scanner.png" alt="Down-arrow" width="700" height="500">
 </div>
-<input type="text" (keyup.enter)="getInputValue($event)" class="text-box" autofocus>
-<div class="item-list">
+<input style="border: 0" type="text" (keyup.enter)="getInputValue($event)" class="scan-text-box" autofocus>
+<div *ngIf="slides.length" class="item-list">
+  <ngx-slick-carousel
+    class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig">
 
+    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+      <hr>
+      <h4>{{ slide.name }} </h4>
+      <h4>₹ &nbsp;{{ slide.price | number:'1.0-0'}} each</h4>
+      <h4>Quantity: &nbsp;{{ slide.quantity }}</h4>
+      <hr>
+      <img src="{{ slide.imageURL }}" alt="{{ slide.name }}" width="200px" height="200px" class="product-img">
+      <img src="assets/button.svg" height="40px" width="40px" class="cross-btn" (click)="removeSlide(slide.id)">
+      <hr>
+    </div>
+  </ngx-slick-carousel>
+  <div class="footer">
+
+    <div class="drop-down-body">
+      <ng-select class="ng-select-div"
+                 [items]="users"
+                 bindLabel="email"
+                 bindValue="id"
+                 groupBy="initials"
+                 [(ngModel)]="selectedUser">
+      </ng-select>
+    </div>
+    <div class="item-infos">
+      <span>Sub Total: ₹&nbsp;{{ subTotal | number:'1.0-0' }}</span>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+      <span>Quantity: &nbsp;{{ totalQuantity }}{{ totalQuantity === 1 ? ' Pc' : ' Pcs'}}</span>
+    </div>
+    <div class="fill-space"></div>
+    <div class="next-btn" [class.disabled]="disableBtn" (click)="proceedToEmail()">
+      <img src="assets/done.png" height="30px" width="30px">
+      <span>&nbsp;DONE</span>
+    </div>
+  </div>
+  <div><span></span></div>
 </div>
