@@ -1,0 +1,9 @@
+<div class="drop-down-body">
+  <div>
+    <select class="select-div">
+      <option *ngFor="let user of users" [value]="user.id">
+        {{ user.email }}
+      </option>
+    </select>
+  </div>
+</div>

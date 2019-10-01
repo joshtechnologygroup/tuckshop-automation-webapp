@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+/* To remove margin of user agent style sheet from each element*/
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+*{
+  margin: 0;
+}
+
+/*adding global font family*/
+* {
+  font-family: 'Nunito', sans-serif;
+}
+.slick-slider {
+  width: 90%;
+  margin: auto;
+}
+
+.nav-btn {
+  height: 47px;
+  position: absolute;
+  width: 26px;
+  cursor: pointer;
+  top: 100px !important;
+}
+
+.prev-slide.slick-disabled,
+.next-slide.slick-disabled {
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.prev-slide {
+  left: -33px;
+}
+
+.next-slide {
+  right: -33px;
+}
+
+.prev-slide:hover {
+  background-position: 0px -53px;
+}
+
+.next-slide:hover {
+  background-position: -24px -53px;
+}
