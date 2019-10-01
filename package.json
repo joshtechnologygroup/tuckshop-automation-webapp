@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~8.2.0",
+    "@angular/animations": "^8.2.8",
     "@angular/cdk": "~8.2.0",
     "@angular/cli": "~8.2.0",
     "@angular/common": "~8.2.0",
@@ -29,7 +29,7 @@
     "diff-so-fancy": "^1.2.7",
     "jquery": "^3.4.1",
     "ngx-slick-carousel": "^0.4.6",
-    "ngx-snackbar": "^2.0.1",
+    "ngx-toastr": "^11.0.0",
     "rxjs": "6.0.0",
     "slick-carousel": "^1.8.1",
     "zone.js": "^0.8.26"

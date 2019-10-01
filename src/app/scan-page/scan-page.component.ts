@@ -4,7 +4,6 @@ import {ProductService} from "../services/product.service";
 import {environment} from "../../environments/environment";
 import {UserService} from "../services/user.service";
 import {OrderService} from "../services/order.service";
-import {SnackbarService} from "ngx-snackbar";
 
 
 @Component({
@@ -20,7 +19,6 @@ export class ScanPageComponent implements OnInit {
     private productService: ProductService,
     private userService: UserService,
     private orderService: OrderService,
-    private snackbarService: SnackbarService
   ) {}
 
   @ViewChild('barcodeInput',{static:false}) barcodeField: ElementRef;
@@ -139,10 +137,10 @@ export class ScanPageComponent implements OnInit {
   }
 
   proceedToEmail() {
-    if (this.selectedUser >= 0) {
-      this.snackbarService.add({msg:'Please choose email first',color:'red',timeout:5});
-      return;
-    }
+    // if (this.selectedUser >= 0) {
+    // this.snackbarService.add({msg:'Please choose email first',color:'red',timeout:5});
+    //   return;
+    // }
     this.disableBtn = true;
     const body = {
       user_id: this.selectedUser,
@@ -158,7 +156,7 @@ export class ScanPageComponent implements OnInit {
     this.orderService.placeOrder(JSON.stringify(body)).subscribe(() => {
       this.disableBtn = false;
       this.ngOnInit();
-      this.snackbarService.add({msg:'Succesfully added',color:'green'})
+      // this.snackbarService.add({msg:'Succesfully added',color:'green'})
     },(err) => {
       console.log(err);
       this.disableBtn = false;

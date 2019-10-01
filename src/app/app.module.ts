@@ -9,7 +9,6 @@ import { ChooseUserComponent } from './choose-user/choose-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
-import { SnackbarModule } from 'ngx-snackbar';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { SnackbarModule } from 'ngx-snackbar';
     ChooseUserComponent
   ],
   imports: [
-    SnackbarModule.forRoot(),
     NgSelectModule,
     FormsModule,
     HttpClientModule,
