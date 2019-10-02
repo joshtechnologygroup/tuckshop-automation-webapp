@@ -4,6 +4,7 @@ import {ProductService} from "../services/product.service";
 import {environment} from "../../environments/environment";
 import {UserService} from "../services/user.service";
 import {OrderService} from "../services/order.service";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class ScanPageComponent implements OnInit {
     private productService: ProductService,
     private userService: UserService,
     private orderService: OrderService,
+    private toastr: ToastrService,
   ) {}
 
   @ViewChild('barcodeInput',{static:false}) barcodeField: ElementRef;
@@ -37,6 +39,7 @@ export class ScanPageComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
     this.slides = [];
     this.users = null;
     this.selectedUser = null;
